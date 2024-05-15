@@ -9,10 +9,23 @@ import { UsuarioGeneral } from '../interfaces/usuario';
 export class UsuarioService {
   constructor(private http: HttpClient) {}
 
-  verificacion(usuario: UsuarioLogin) {
-    return this.http.post<UsuarioGeneral>(
-      'https://inbestbackend.onrender.com/api/login',
-      usuario,
-    );
+  verificacion(usuario: UsuarioLogin): UsuarioGeneral {
+    let usuarioSesion: UsuarioGeneral = {
+      id_usuario: 0,
+      usuario: '',
+      clave: '',
+      correo: '',
+      persona: 0,
+      tipo_usuario: '',
+    };
+    this.http
+      .post<UsuarioGeneral>(
+        'https://inbestbackend.onrender.com/api/login',
+        usuario,
+      )
+      .subscribe((usuario: UsuarioGeneral) => {
+        usuarioSesion = usuario;
+      });
+    return usuarioSesion;
   }
 }

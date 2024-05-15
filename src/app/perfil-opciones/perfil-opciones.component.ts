@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../service/usuario.service';
 import { UsuarioGeneral, UsuarioLogin } from '../interfaces/usuario';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-perfil-opciones',
@@ -20,13 +21,7 @@ export class PerfilOpcionesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.usuarioService
-      .verificacion(this.user)
-      .subscribe((usuario: UsuarioGeneral) => {
-        this.usuarioSesion = usuario;
-      });
-
-    console.log(this.usuarioSesion);
+    this.usuarioSesion = this.usuarioService.verificacion(this.user);
   }
 
   mandarLogin(): void {
