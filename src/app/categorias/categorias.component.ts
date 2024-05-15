@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class CategoriasComponent {
   constructor(private route: Router) {}
 
-  mandarLogin(titulo: string): void {
-    this.route.navigateByUrl('/login');
+  mandarLogin(): void {
+    this.route.navigate(['login']);
   }
 }

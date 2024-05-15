@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../service/usuario.service';
 import { UsuarioGeneral, UsuarioLogin } from '../interfaces/usuario';
 import { Router } from '@angular/router';
@@ -8,22 +8,28 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [],
   templateUrl: './perfil-opciones.component.html',
-  styleUrl: './perfil-opciones.component.css'
+  styleUrl: './perfil-opciones.component.css',
 })
 export class PerfilOpcionesComponent implements OnInit {
   usuarioSesion: UsuarioGeneral | undefined;
-  user: UsuarioLogin = { usuario: '', clave: ''};
+  user: UsuarioLogin = { usuario: '', clave: '' };
 
-  constructor(private usuarioService: UsuarioService, private route: Router) {}
+  constructor(
+    private usuarioService: UsuarioService,
+    private route: Router,
+  ) {}
 
   ngOnInit(): void {
-    const user = this.usuarioService.verificacion(this.user)
+    this.usuarioService
+      .verificacion(this.user)
       .subscribe((usuario: UsuarioGeneral) => {
         this.usuarioSesion = usuario;
       });
+
+    console.log(this.usuarioSesion);
   }
 
-  mandarLogin(titulo: string): void{
-    this.route.navigate([titulo]);
+  mandarLogin(): void {
+    this.route.navigate(['login']);
   }
 }

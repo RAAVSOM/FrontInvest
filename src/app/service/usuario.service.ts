@@ -4,12 +4,15 @@ import { Injectable, inject } from '@angular/core';
 import { UsuarioGeneral } from '../interfaces/usuario';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsuarioService {
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
-  verificacion(usuario: UsuarioLogin){
-    return this.http.post<UsuarioGeneral>("http://localhost:9998/login", usuario);
+  verificacion(usuario: UsuarioLogin) {
+    return this.http.post<UsuarioGeneral>(
+      'https://inbestbackend.onrender.com/api/login',
+      usuario,
+    );
   }
 }
