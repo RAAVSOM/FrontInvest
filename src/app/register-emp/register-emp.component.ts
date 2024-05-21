@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { UsuarioService } from '../service/usuario.service';
-import { UsuarioLogin } from './../interfaces/usuario';
+import { UsuarioLogin } from '../interfaces/usuario';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register-emp',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  imports: [FormsModule, ReactiveFormsModule],
+  templateUrl: './register-emp.component.html',
+  styleUrl: './register-emp.component.css',
 })
-export class LoginComponent {
+export class RegisterEmpComponent {
   mensaje = '';
   userForm = new FormGroup({
     usuario: new FormControl(''),

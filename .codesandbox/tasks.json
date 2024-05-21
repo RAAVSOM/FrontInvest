@@ -45,6 +45,10 @@
     "front-invest@0.0.0 start": {
       "name": "home",
       "command": "front-invest@0.0.0 start"
+    },
+    "ng g c": {
+      "name": "generate component",
+      "command": "ng g c"
     }
   }
 }

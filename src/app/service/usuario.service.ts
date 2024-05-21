@@ -1,7 +1,7 @@
-import { UsuarioLogin } from './../interfaces/usuario';
+import { UsuarioLogin, UsuarioRegister } from './../interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { UsuarioGeneral } from '../interfaces/usuario';
+import { UsuarioGeneral, Persona } from '../interfaces/usuario';
 
 @Injectable({
   providedIn: 'root',
@@ -15,12 +15,12 @@ export class UsuarioService {
       usuario: '',
       clave: '',
       correo: '',
-      persona: 0,
+      persona: {},
       tipo_usuario: '',
     };
     this.http
       .post<UsuarioGeneral>(
-        'https://inbestbackend.onrender.com/api/login',
+        'https://inbestbackend.onrender.com/registerInversionista',
         usuario,
       )
       .subscribe((usuario: UsuarioGeneral) => {
@@ -28,4 +28,6 @@ export class UsuarioService {
       });
     return usuarioSesion;
   }
+
+  registerInv(usuario: UsuarioRegister) {}
 }

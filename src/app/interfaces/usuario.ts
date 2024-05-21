@@ -1,13 +1,26 @@
-export interface UsuarioGeneral{
+export interface Persona {}
+
+export interface UsuarioGeneral {
   id_usuario: number;
   usuario: string;
   clave: string;
   correo: string;
-  persona: number;
+  persona: Persona;
   tipo_usuario: string;
 }
 
-export interface UsuarioLogin{
+export interface UsuarioLogin {
   usuario: string;
   clave: string;
+}
+
+export interface UsuarioRegister {
+  usuario: string;
+  clave: string;
+  correo: string;
+  tipo_usuario: string;
+}
+
+export interface Inversionista {
+  usuario: UsuarioGeneral;
 }

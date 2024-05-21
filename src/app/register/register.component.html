@@ -1,5 +1,5 @@
-<div class="bg-dark p-0 m-0">
-    <div class="row gx-0 vw-100 vh-100 p-3 shadow">
+<div class="p-0 m-0 ">
+    <div class="row bg-dark gx-0 vw-100 vh-100 p-3 shadow">
         <div class="row col-lg-8 ms-4 me-4 align-content-center justify-content-center">
             <div class="bg-light w-75 gap-5 h-100 rounded-circle overflow-x-auto d-flex flex-row align-items-center justify-content-center">
                 <button class="border-0 bg-light h-100 w-100" (click)="mandarHome()">
@@ -7,18 +7,22 @@
                 </button>
             </div>
         </div>
-        <div class="col form-signin bg-light p-5 rounded-2 align-content-center" id="tab">
+        <div class="col form-signin bg-light py-0 px-5 rounded-2 align-content-center" id="tab">
             <form class="row justify-content-center" [formGroup]="userForm">
-                <h1 class="h3 mb-3 fw-normal text-center fs-1">Iniciar sesión</h1>
+                <h1 class="h3 mb-3 fw-normal text-center fs-1">Invierte Ahora</h1>
                 <label class="mt-3">Usuario</label>
                 <input type="text" class="form-control shadow mt-1 border-0" formControlName="usuario">
+                <label class="mt-3">Correo</label>
+                <input type="email" class="form-control shadow mt-1 border-0" formControlName="correo">
                 <label class="mt-3">Contraseña</label>
                 <input type="password" class="form-control shadow mt-1 border-0" formControlName="clave">
+                <label class="mt-3">Confirmar Contraseña</label>
+                <input type="password" class="form-control shadow mt-1 border-0" formControlName="claveCon">
+
+                <button class="w-100 btn btn-dark mt-4 p-3 fs-5" type="button" (click)="onSubmit()">Crear Cuenta</button>
     
-                <button class="w-100 btn btn-dark mt-4 p-3 fs-5" type="button" (click)="onSubmit()">Iniciar sesión</button>
-                
-                <a href="/register" class="text-center text-decoration-none mt-4 text-dark">¿No tienes una cuenta?</a>
-                <a href="#" class="text-center text-decoration-none mt-2 text-dark">¿Olvidaste la contraseña?</a>
+                <a href="/login" class="text-center text-decoration-none mt-4 text-dark">¿Ya tienes una cuenta?</a>
+                <a href="/register-emp" class="text-center text-decoration-none mt-2 text-dark">¿Quieres crear tu negocio?</a>
             </form>
             <div>
                 <p class="text-center mt-4">{{ mensaje }}</p>
