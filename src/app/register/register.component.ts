@@ -34,7 +34,7 @@ export class RegisterComponent {
   ) {}
 
   onSubmit() {
-    if (
+    /*if (
       this.userForm.value.usuario == '' ||
       this.userForm.value.clave == '' ||
       this.userForm.value.claveCon == '' ||
@@ -49,18 +49,35 @@ export class RegisterComponent {
           clave: this.userForm.value.clave ?? '',
           tipo_usuario: 'inversionista',
         };
+        let user = this.usuarioService.registerUser(usuarioReg);
         let inversionista: Inversionista = {
-          usuario: usuarioReg,
+          usuario: user,
         };
-        let user = this.usuarioService.registerInv(usuarioReg);
-        console.log(user);
+        let inv = this.usuarioService.registerInv(inversionista);
+        console.log(inv);
       } else {
         this.mensaje = 'Las Contraseñas deben ser iguales';
       }
-    }
+    }*/
+  }
+
+  mandarEmp(): void {
+    this.route.navigate(['emprendedor']);
   }
 
   mandarHome(): void {
     this.route.navigate(['home']);
+  }
+
+  mandarEmprendedor(): void {
+    this.route.navigate(['home']);
+  }
+
+  mandarInversionita(): void {
+    this.route.navigate(['home']);
+  }
+
+  mandarAdmin(): void {
+    this.route.navigate(['admin']);
   }
 }

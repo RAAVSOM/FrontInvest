@@ -3,8 +3,18 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterEmpComponent } from './register-emp/register-emp.component';
+import { AdminComponent } from './admin/admin.component';
+import { InversionistaComponent } from './inversionista/inversionista.component';
+import { EmprendedorComponent } from './emprendedor/emprendedor.component';
+import { SubastaComponent } from './subasta/subasta.component';
+import { ContactosComponent } from './contactos/contactos.component';
 
 export const routes: Routes = [
+  { path: 'contact', component: ContactosComponent },
+  { path: 'suba', component: SubastaComponent },
+  { path: 'emprendedor', component: EmprendedorComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'inversionista', component: InversionistaComponent },
   { path: 'register-emp', component: RegisterEmpComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

@@ -28,17 +28,21 @@ export class RegisterEmpComponent {
   ) {}
 
   onSubmit() {
-    let usuarioLog: UsuarioLogin = {
+    /*let usuarioLog: UsuarioLogin = {
       usuario: this.userForm.value.usuario ?? '',
       clave: this.userForm.value.clave ?? '',
     };
     let user = this.usuarioService.verificacion(usuarioLog);
     if (user.id_usuario == 0) {
       this.mensaje = 'Usuario o Contraseña incorrecta';
-    }
+    }*/
   }
 
   mandarHome(): void {
     this.route.navigate(['home']);
+  }
+
+  mandarAdmin(): void {
+    this.route.navigate(['admin']);
   }
 }
