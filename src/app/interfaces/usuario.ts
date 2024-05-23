@@ -24,3 +24,8 @@ export interface UsuarioRegister {
 export interface Inversionista {
   usuario: UsuarioGeneral;
 }
+
+export interface InversionistaGeneral {
+  id_inversionista: number;
+  usuario: UsuarioGeneral;
+}

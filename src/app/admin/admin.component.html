@@ -1,0 +1,86 @@
+<div class="bg-light vh-100 vw-100">
+    <div class="bg-dark h-100">
+        <header class="z-2 bg-head rounded-bottom-3 navbar pt-0 pb-0 gx-0 shadow bg-secondary">
+            <div class="container-fluid gap-0 shadow rounded-bottom-3 pt-2 pb-2 rounded-bottom-3 justify-content-around shadow bg-light">
+                <h1 class="fw-semibold ms-4">Administrador</h1>
+                <div class="vr"></div>
+                <div class="input-group w-50">
+                    <input type="text" class="form-control" placeholder="¿Buscas Algo?" aria-label="¿Buscar Algo?" aria-describedby="button-addon">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon">Buscar</button>
+                </div>
+                <button data-bs-toggle="offcanvas" class="navbar-toggler d-flex row align-items-center" type="button" data-bs-target="#offcanvas2" aria-controls="offcanvas2" style="margin-right: 10px">
+                    <div class="col-sm-auto text-center">
+                        <label class="fw-semibold">Perfil</label>
+                    </div>
+                    <div class="col-sm-auto rounded" style="width: 60px; height: 60px; background-color: #000000; ">
+                        <img src="" alt="">
+                    </div>
+                </button>
+            </div>
+        </header>
+
+        <div class="container-fluid row justify-content-center rounded-bottom-3 p-4 gx-0" style="background-color: #f2f2f2; height: 85%">
+            <div class="row">
+                <div class="col bg-light h-100 px-0">
+                    <table class="table table-hover table-sm rounded-3">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Valor</th>
+                            <th>Fecha</th>
+                            <th>Apertura</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Descripcion</td>
+                            <td>Valor</td>
+                            <td>Fecha</td>
+                            <td>Apertura</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Descripcion</td>
+                            <td>Valor</td>
+                            <td>Fecha</td>
+                            <td>Apertura</td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="shadow offcanvas offcanvas-end rounded-end-2 rounded-start-2" id="offcanvas2">
+            <div class="z-2 shadow justify-content-start rounded-start-2 row fs-5 fw-semibold  pt-2 pb-2 sticky-sm-top gx-0">
+                <button type="button" class="position-absolute col-auto btn-close ms-1" data-bs-dismiss="offcanvas" aria-label="close"></button>
+                <label class="col-auto text-center flex-grow-1 offcanvas-title">Perfil de Usuario</label>
+            </div>
+            <div class="mt-4 row-cols-1 justify-content-center text-center ps-4 pe-4">
+                <div class="bg-secondary pt-2 pb-2 rounded-3">
+                    <div class="col 'py-3">
+                        <button class="shadow col btn btn-danger" type="button" (click)="mandarHome()">Cerrar Sesion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de informacion -->
+<div class="modal fade" id="modalStatic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalstaticnegocio" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>

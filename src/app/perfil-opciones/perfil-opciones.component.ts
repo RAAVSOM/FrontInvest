@@ -21,7 +21,7 @@ export class PerfilOpcionesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.usuarioSesion = this.usuarioService.verificacion(this.user);
+    //this.usuarioSesion = this.usuarioService.verificacion(this.user);
   }
 
   mandarLogin(): void {

@@ -28,17 +28,21 @@ export class LoginComponent {
   ) {}
 
   onSubmit() {
-    let usuarioLog: UsuarioLogin = {
+    /*let usuarioLog: UsuarioLogin = {
       usuario: this.userForm.value.usuario ?? '',
       clave: this.userForm.value.clave ?? '',
     };
     let user = this.usuarioService.verificacion(usuarioLog);
     if (user.id_usuario == 0) {
       this.mensaje = 'Usuario o Contraseña incorrecta';
-    }
+    }*/
   }
 
   mandarHome(): void {
     this.route.navigate(['home']);
+  }
+
+  mandarInver(): void {
+    this.route.navigate(['inversionista']);
   }
 }
