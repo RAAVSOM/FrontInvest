@@ -70,11 +70,11 @@ export class RegisterComponent {
   }
 
   mandarEmprendedor(): void {
-    this.route.navigate(['home']);
+    this.route.navigate(['emprendedor']);
   }
 
   mandarInversionita(): void {
-    this.route.navigate(['home']);
+    this.route.navigate(['inversionista']);
   }
 
   mandarAdmin(): void {

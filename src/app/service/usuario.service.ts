@@ -13,7 +13,8 @@ import { UsuarioGeneral, Persona } from '../interfaces/usuario';
 })
 export class UsuarioService {
   constructor(private http: HttpClient) {}
-  /*
+
+  //verificacion y login
   verificacion(usuario: UsuarioLogin): UsuarioGeneral {
     let usuarioSesion: UsuarioGeneral = {
       id_usuario: 0,
@@ -24,13 +25,18 @@ export class UsuarioService {
       tipo_usuario: '',
     };
     this.http
-      .post<UsuarioGeneral>('https://inbestbackend.onrender.com/', usuario)
+      .post<UsuarioGeneral>(
+        'https://inbestbackend.onrender.com/api/login',
+        usuario,
+      )
       .subscribe((usuario: UsuarioGeneral) => {
         usuarioSesion = usuario;
       });
     return usuarioSesion;
   }
 
+  /*
+  //registro del emprendedor
   registerUser(usuario: UsuarioRegister) {
     let usuarioSesion: UsuarioGeneral = {
       id_usuario: 0,
@@ -48,6 +54,7 @@ export class UsuarioService {
     return usuarioSesion;
   }
 
+  //registro del inversionista
   registerInv(inversionista: Inversionista) {
     let inversionistaM = '';
     this.http
@@ -57,4 +64,7 @@ export class UsuarioService {
       });
     return inversionistaM;
   }*/
+
+  //login del inversionista
+  buscarInversionista(id: number) {}
 }

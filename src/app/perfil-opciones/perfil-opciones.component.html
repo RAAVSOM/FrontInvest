@@ -1,22 +1,54 @@
 <div class="mt-4 row-cols-1 justify-content-center text-center p-4 w-100 h-100">
-  @if (usuarioSesion?.usuario == '') {
+  @if (usuarioSesion.usuario == '') {
     <div class="bg-secondary pt-2 pb-3 rounded-3">
       <div class="col">
         <button (click)="mandarLogin()" class="shadow col btn btn-dark mt-3" type="button">Iniciar Sesion</button>
       </div>
     </div>
   }
-  @else if (usuarioSesion?.tipo_usuario == "administrador") {
+  @else if (usuarioSesion.tipo_usuario == "administrador") {
     <div class="bg-secondary pt-2 pb-2 rounded-3">
       <div class="col">
-        <button class="shadow col btn btn-danger mt-3" type="button">Cerrar Sesion</button>
+        <button class="shadow col btn btn-danger mt-3" type="button" (click)="mandarHome()">Cerrar Sesion</button>
       </div>
     </div>
   }
-  @else if (usuarioSesion?.tipo_usuario == "emprendedor") {
-
+  @else if (usuarioSesion.tipo_usuario == "emprendedor") {
+    <div class="bg-secondary pt-2 pb-2 rounded-3">
+      <div class="col">
+          <button class="shadow btn btn-secondary" type="button">Informacion Personal</button>
+      </div>
+      <div class="col">
+          <button class="shadow col btn btn-secondary mt-2" type="button">Mis Negocios</button>
+      </div>
+      <div class="col">
+          <button class="shadow col btn btn-danger mt-3" type="button" (click)="mandarHome()">Cerrar Sesion</button>
+      </div>
+  </div>
+  <div class="ms-1 col mt-3 shadow rounded-3 overflow-auto  overflow-x-hidden h-75 w-100 justify-content-center">
+      <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
+          <label>Titulo Notificacion</label>
+          <label>Descripcion notificacion</label>
+      </button>
+      <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
+          <label>Titulo Notificacion</label>
+          <label>Descripcion notificacion</label>
+      </button>
+      <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
+          <label>Titulo Notificacion</label>
+          <label>Descripcion notificacion</label>
+      </button>
+      <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
+          <label>Titulo Notificacion</label>
+          <label>Descripcion notificacion</label>
+      </button>
+      <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
+          <label>Titulo Notificacion</label>
+          <label>Descripcion notificacion</label>
+      </button>
+  </div>
   }
-  @else if (usuarioSesion?.tipo_usuario == "inversionista") {
+  @else if (usuarioSesion.tipo_usuario == "inversionista") {
     <div class="bg-secondary pt-2 pb-2 rounded-3">
       <div class="col">
           <button class="shadow btn btn-secondary" type="button">Informacion Personal</button>
@@ -31,7 +63,7 @@
           <button class="shadow col btn btn-secondary mt-2" type="button">Emprendimientos Guardados</button>
       </div>
       <div class="col">
-          <button class="shadow col btn btn-danger mt-3" type="button">Cerrar Sesion</button>
+          <button class="shadow col btn btn-danger mt-3" type="button" (click)="mandarHome()">Cerrar Sesion</button>
       </div>
   </div>
   <div class="ms-1 col mt-3 shadow rounded-3 overflow-y-auto h-50 w-100 justify-content-center">
