@@ -48,23 +48,17 @@
                     </button>
                   </div>
 
-                  <div class="row gx-0 flex-column">
-                    <label class="m-2 fs-1">Nombre Negocio</label>
-                    <p class="m-2">Descripcion Negocio</p>
-                    <label class="m-2 fs-5">Tipo de Negocio</label>
-                    <label class="m-2 fs-5">Localizacion</label>
-                  </div>
+                  @if (negocioSesion | async; as negocio) {
+                    <div class="row gx-0 flex-column">
+                      <label class="m-2 fs-1">{{negocio?.titulo}}</label>
+                      <p class="m-2">{{negocio?.descripcion}}</p>
+                      <label class="m-2 fs-5">{{negocio?.tipo_negocio}}</label>
+                      <label class="m-2 fs-5">{{negocio?.lugar}}</label>
+                    </div>
+                  }
             </div>
             <div class="col bg-light flex-shrink-1 rounded-start-3" style="width: 15%;">
-                <div class="h-75 w-100 row gx-0 flex-column overflow-auto p-5">
-                    <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0 ">
-                        <label>Titulo Notificacion</label>
-                        <label>Descripcion notificacion</label>
-                    </button>
-                </div>
-                <div class="bg-secondary w-100 h-25 row gx-0 justify-content-center align-items-center">
-                    <button class="shadow btn btn-dark w-50 h-50 rounded-3">Agregar Solicitud de Inversion</button>
-                </div>
+                <app-subasta-list (verSoli)="verSol($event)" (verInve)="verInv($event)"></app-subasta-list>
             </div>
         </div>
         <div class="shadow offcanvas offcanvas-end rounded-end-2 rounded-start-2" id="offcanvas2">
@@ -72,40 +66,134 @@
                 <button type="button" class="position-absolute col-auto btn-close ms-1" data-bs-dismiss="offcanvas" aria-label="close"></button>
                 <label class="col-auto text-center flex-grow-1 offcanvas-title">Perfil de Usuario</label>
             </div>
-            <div class="mt-4 row-cols-1 justify-content-center text-center ps-4 pe-4">
-                <div class="bg-secondary pt-2 pb-2 rounded-3">
-                    <div class="col">
-                        <button class="shadow btn btn-secondary" type="button">Informacion Personal</button>
-                    </div>
-                    <div class="col">
-                        <button class="shadow col btn btn-secondary mt-2" type="button">Mis Negocios</button>
-                    </div>
-                    <div class="col">
-                        <button class="shadow col btn btn-danger mt-3" type="button" (click)="mandarHome()">Cerrar Sesion</button>
-                    </div>
-                </div>
-                <div class="ms-1 col mt-3 shadow rounded-3 overflow-auto  overflow-x-hidden h-75 w-100 justify-content-center">
-                    <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
-                        <label>Titulo Notificacion</label>
-                        <label>Descripcion notificacion</label>
-                    </button>
-                    <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
-                        <label>Titulo Notificacion</label>
-                        <label>Descripcion notificacion</label>
-                    </button>
-                    <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
-                        <label>Titulo Notificacion</label>
-                        <label>Descripcion notificacion</label>
-                    </button>
-                    <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
-                        <label>Titulo Notificacion</label>
-                        <label>Descripcion notificacion</label>
-                    </button>
-                    <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0">
-                        <label>Titulo Notificacion</label>
-                        <label>Descripcion notificacion</label>
-                    </button>
-                </div>
-            </div>
+            <app-perfil-opciones></app-perfil-opciones>
+        </div>
     </div>
+</div>
+
+
+    <!-- Modal de informacion -->
+    <div class="modal fade" id="modalStatic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalstaticnegocio" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+              </div>
+              <div class="modal-body bg-dark">
+                <h1 class="fs-2 text-center mb-4 text-light">Agregar Solicitud de Inversion</h1>
+                <form class="row justify-content-" [formGroup]="soliForm">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username" formControlName="valor_solicitud">
+                      <label for="floatingInputGroup1">Valor de la solicitud</label>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">%</span>
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username" formControlName="porcentaje_rentabilidad">
+                      <label for="floatingInputGroup1">Porcentaje de rentabilidad</label>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">%</span>
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username" formControlName="porcentaje_liquidez">
+                      <label for="floatingInputGroup1">Porcentaje de liquidez</label>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">#</span>
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Username" formControlName="nivel_riezgotolerado">
+                      <label for="floatingInputGroup1">Nivel de riezgo tolerado</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="crearSolicitud()">Enviar Solicitud</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Modal de informacion -->
+  <div class="modal fade" id="modalStaticS" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalstaticnegocio" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+              @if (solicitud | async; as result) {
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-dark text-center">Informacion de la Solicitud</li>
+                  <li class="list-group-item list-group-item-dark text-center">${{result.valor_solicitud}}</li>
+                  <li class="list-group-item list-group-item-dark text-center">Nivel de Rezgo Tolerado: {{result.nivel_riezgotolerado}}</li>
+                  <li class="list-group-item list-group-item-dark text-center">Liquidez: {{result.porcentaje_liquidez}}%</li>
+                  <li class="list-group-item list-group-item-dark text-center">Rentabilidad: {{result.porcentaje_rentabilidad}}%</li>
+                </ul>
+
+                <ul class="list-group mt-4">
+                  <li class="list-group-item list-group-item-dark text-center">Informacion Del Inversionista</li>
+                  <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.nombre_persona}}</li>
+                  <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.apellido_persona}}</li>
+                  <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.ciudad}}</li>
+                  <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.telefono}}</li>
+                </ul>
+              }
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="aceptarSolicitud()">Aceptar Solititud de Inversion</button>
+          </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de informacion -->
+<div class="modal fade" id="modalStaticI" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalstaticnegocio" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            @if (inversionSesion | async; as result) {
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-dark text-center">Informacion de la Solicitud</li>
+                <li class="list-group-item list-group-item-dark text-center">${{result.solicitud.valor_solicitud}}</li>
+                <li class="list-group-item list-group-item-dark text-center">Nivel de Rezgo Tolerado: {{result.solicitud.nivel_riezgotolerado}}</li>
+                <li class="list-group-item list-group-item-dark text-center">Liquidez: {{result.solicitud.porcentaje_liquidez}}%</li>
+                <li class="list-group-item list-group-item-dark text-center">Rentabilidad: {{result.solicitud.porcentaje_rentabilidad}}%</li>
+              </ul>
+
+              <ul class="list-group mt-4">
+                <li class="list-group-item list-group-item-dark text-center">Informacion Del Inversionista</li>
+                <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.nombre_persona}}</li>
+                <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.apellido_persona}}</li>
+                <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.ciudad}}</li>
+                <li class="list-group-item list-group-item-dark text-center">{{result.inversionista.usuario.persona?.telefono}}</li>
+              </ul>
+            }
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal de informacion -->
+<div class="modal fade" id="modalStaticC" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalstaticnegocio" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="text-center">Estas Seguro?</h1>
+            <h4 class="text-center">una vez cierres la subasta no podran invertir en tu negocio</h4>
+          </div>
+          <div class="modal-body row gx-0 gap-4">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="cerrarSubasta()">Cerrar Subasta</button>
+          </div>
+      </div>
+  </div>
 </div>

@@ -1,5 +1,13 @@
-<button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Musica</button>
-<button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Arte</button>
-<button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Ventas</button>
-<button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Tecnologia</button>
-<button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Hogar</button>
+@if (id_inversionista == 0) {
+  <button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Musica</button>
+  <button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Arte</button>
+  <button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Ventas</button>
+  <button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Tecnologia</button>
+  <button (click)="mandarLogin()" class="col btn btn-secondary shadow" >Hogar</button>
+}@else {
+  <button (click)="mandarEmp()" class="col btn btn-secondary shadow" >Musica</button>
+  <button (click)="mandarEmp()" class="col btn btn-secondary shadow" >Arte</button>
+  <button (click)="mandarEmp()" class="col btn btn-secondary shadow" >Ventas</button>
+  <button (click)="mandarEmp()" class="col btn btn-secondary shadow" >Tecnologia</button>
+  <button (click)="mandarEmp()" class="col btn btn-secondary shadow" >Hogar</button>
+}

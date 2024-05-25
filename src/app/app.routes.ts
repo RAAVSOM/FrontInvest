@@ -7,10 +7,10 @@ import { AdminComponent } from './admin/admin.component';
 import { InversionistaComponent } from './inversionista/inversionista.component';
 import { EmprendedorComponent } from './emprendedor/emprendedor.component';
 import { SubastaComponent } from './subasta/subasta.component';
-import { ContactosComponent } from './contactos/contactos.component';
+import { ConfiguracionPersonalComponent } from './configuracion-personal/configuracion-personal.component';
 
 export const routes: Routes = [
-  { path: 'contact', component: ContactosComponent },
+  { path: 'confi', component: ConfiguracionPersonalComponent },
   { path: 'suba', component: SubastaComponent },
   { path: 'emprendedor', component: EmprendedorComponent },
   { path: 'admin', component: AdminComponent },

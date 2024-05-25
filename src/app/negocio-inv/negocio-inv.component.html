@@ -1,0 +1,21 @@
+@if (negocios$ | async; as resultObject) {
+  @for (item of resultObject; track item.titulo) {
+    <button data-bs-toggle="modal" data-bs-target="#modalStatic" class="btn p-0 mt-3" style="width: 30vw;" (click)="verNegocio(item.id_negocio)">
+      <div class="card rounded-3 border-0">
+          <img class="card-img" src="https://i.ibb.co/k4GHsWy/business-people-shaking-hands-together.jpg" height="280">
+          <div class="shadow bg-dark text-light card-footer no-btn row-cols-1 align-content-end text-start">
+              <div class="col no-btn">
+                  <label class="fs-4">{{item.titulo}}</label>
+              </div>
+              <div class="col no-btn">
+                  <label class="desc">{{item.descripcion}}</label>
+              </div>
+              <div class="col no-btn row gx-0 justify-content-around">
+                  <label class="col no-btn precio">{{item.lugar}}</label>
+                  <label class="col no-btn apertura text-center">{{item.tipo_negocio}}</label>
+              </div>
+          </div>
+      </div>
+    </button>
+  }
+}

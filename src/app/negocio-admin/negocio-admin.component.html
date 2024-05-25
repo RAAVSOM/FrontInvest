@@ -1,0 +1,22 @@
+<table class="table table-hover table-sm rounded-3">
+  <thead>
+  <tr>
+      <th>Titulo</th>
+      <th>Descripcion</th>
+      <th>Localizacion</th>
+      <th>Tipo de Negocio</th>
+  </tr>
+  </thead>
+  <tbody>
+    @if (negocios$ | async; as resultObject) {
+      @for(item of resultObject; track item.titulo){
+        <tr data-bs-toggle="modal" data-bs-target="#modalStatic" (click)="verNegocio(item.id_negocio)">
+            <td>{{item.titulo}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.lugar}}</td>
+            <td>{{item.tipo_negocio}}</td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>

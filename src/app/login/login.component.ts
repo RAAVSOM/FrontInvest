@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UsuarioService } from '../service/usuario.service';
 import { UsuarioLogin } from './../interfaces/usuario';
 import { SessionService } from '../session.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -34,25 +35,36 @@ export class LoginComponent {
       usuario: this.userForm.value.usuario ?? '',
       clave: this.userForm.value.clave ?? '',
     };
-
-    let user = this.usuarioService.verificacion(usuarioLog);
-    if (user.id_usuario == 0) {
-      this.mensaje = 'Usuario o Contraseña incorrecta';
-    } else {
-      if (user.tipo_usuario == 'inversionista') {
-        this.usuarioService.buscarInversionista(user.id_usuario);
-        this.session.setUsuarioSesion(user);
-        this.mandarInver();
-      } else if (user.tipo_usuario == 'emprendedor') {
-        this.usuarioService.buscarInversionista(user.id_usuario);
-        this.session.setUsuarioSesion(user);
-        this.mandarEmp();
-      } else if (user.tipo_usuario == 'administrador') {
-        this.usuarioService.buscarInversionista(user.id_usuario);
-        this.session.setUsuarioSesion(user);
-        this.mandarAdmin();
+    let sesion = this.usuarioService.verificacion(usuarioLog);
+    let user = lastValueFrom(sesion)
+    user.then(user =>{
+      console.log(user.id_usuario);
+      if (user.id_usuario == 0) {
+        this.mensaje = 'Usuario o Contraseña incorrecta';
+      } else {
+        if (user.tipo_usuario == 'inversionista') {
+          let sesion = this.usuarioService.buscarInversionista(user.id_usuario);
+          let inv = lastValueFrom(sesion);
+          inv.then(inv =>{
+            console.log(inv);
+            this.session.setUsuarioSesion(user);
+            this.session.setInversionista(inv);
+            this.mandarInver();
+          });
+        } else if (user.tipo_usuario == 'emprendedor') {
+          let sesion = this.usuarioService.buscarEmprendedor(user.id_usuario);
+          let emp = lastValueFrom(sesion);
+          emp.then(emp =>{
+            console.log(emp);
+            this.session.setEmprendedor(emp);
+            this.session.setUsuarioSesion(user);
+            this.mandarEmp();
+          });
+        } else if (user.tipo_usuario == 'administrador') {
+          this.mandarAdmin();
+        }
       }
-    }
+    });
   }
 
   mandarHome(): void {

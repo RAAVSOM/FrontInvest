@@ -63,38 +63,23 @@
     <div class="bg-dark z-0 row gx-0 overflow-y-auto gx-0" style="height: 85%;">
       <div class="row gx-0 justify-content-around">
         <div class="z-1 position-relative gap-4 pt-2 ps-2 justify-content-center bg-dark rounded-bottom-3 me-auto" style="width: 60%;">
-            <button class="bg-light p-3 rounded-3" (click)="mandarSubasta()">
-                <div class="row gx-0 justify-content-around pe-none">
-                  <div style="height: 30vh; width: 25vw;">
-                    <img src="https://placehold.co/" class="object-fit-cover">
-                  </div>
-                  <div style="height: 30vh; width: 25vw;">
-                    <img src="https://placehold.co/" class="object-fit-cover">
-                  </div>
-                </div>
-                <div class="row gx-0 text-center align-items-center pe-none">
-                  <h2 class="col m-0">Titulo Negocio</h2>
-                  <p class="col m-0">Descripcion del negocio</p>
-                  <p class="col m-0">Precio: $100.000</p>
-                  <span class="col">Aprobado</span>
-                </div>
-              </button>
+            <app-negocio-emp></app-negocio-emp>
         </div>
 
         <div class="z-0 bg-light p-3 text-center" style="width: 35%;">
           <h2 class="m-3">Agregar Negocio</h2>
-          <form action="#" class="row gx-0 gap-3">
+          <form action="#" class="row gx-0 gap-3" [formGroup]="negocioForm">
             <div class="row flex-column gx-0">
               <label class="mb-2">Nombre Negocio:</label>
-              <input class="form-control" type="text" id="nombreNegocio" name="nombreNegocio" required="true">
+              <input class="form-control" type="text" id="nombreNegocio" name="nombreNegocio" required="true" formControlName="titulo">
             </div>
             <div class="row flex-column gx-0">
               <label for="descripcionNegocio">Descripcion Negocio:</label>
-              <textarea class="form-control" id="descripcionNegocio" name="descripcionNegocio" rows="5" required="true" ></textarea>
+              <textarea class="form-control" id="descripcionNegocio" name="descripcionNegocio" rows="5" required="true" formControlName="descripcion"></textarea>
             </div>
             <div class="row flex-column gx-0">
               <label for="tipoNegocio">Tipo de Negocio:</label>
-              <select id="tipoNegocio" name="tipoNegocio" class="form-select" required="">
+              <select id="tipoNegocio" name="tipoNegocio" class="form-select" required="true" formControlName="tipo_negocio">
                 <option value="">Seleccionar...</option>
                 <option value="restaurante">Restaurante</option>
                 <option value="tienda">Tienda</option>
@@ -103,7 +88,7 @@
             </div>
             <div class="row flex-column gx-0">
               <label for="localizacionNegocio">Localizacion:</label>
-              <select id="localizacionNegocio" class="form-select" name="localizacionNegocio" required="">
+              <select id="localizacionNegocio" class="form-select" name="localizacionNegocio" required="true" formControlName="lugar">
                 <option value="">Seleccionar...</option>
                 <option value="zona_norte">Zona Norte</option>
                 <option value="zona_centro">Zona Sur</option>
@@ -114,7 +99,7 @@
               <input type="file" class="form-control" id="inputGroupFile02">
               <label class="input-group-text" for="inputGroupFile02">Upload</label>
             </div>
-            <button type="submit" class="btn btn-secondary">Solicitar Permiso</button>
+            <button type="submit" class="btn btn-secondary" (click)="crearNegocio()">Solicitar Permiso</button>
           </form>
         </div>
       </div>

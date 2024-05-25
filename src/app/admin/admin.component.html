@@ -22,34 +22,7 @@
         <div class="container-fluid row justify-content-center rounded-bottom-3 p-4 gx-0" style="background-color: #f2f2f2; height: 85%">
             <div class="row">
                 <div class="col bg-light h-100 px-0">
-                    <table class="table table-hover table-sm rounded-3">
-                        <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Valor</th>
-                            <th>Fecha</th>
-                            <th>Apertura</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Nombre</td>
-                            <td>Descripcion</td>
-                            <td>Valor</td>
-                            <td>Fecha</td>
-                            <td>Apertura</td>
-                        </tr>
-                        <tr>
-                            <td>Nombre</td>
-                            <td>Descripcion</td>
-                            <td>Valor</td>
-                            <td>Fecha</td>
-                            <td>Apertura</td>
-                        </tr>
-                        
-                        </tbody>
-                    </table>
+                  <app-negocio-admin (verNeg)="verNegocio($event)"></app-negocio-admin>
                 </div>
             </div>
         </div>
@@ -70,17 +43,52 @@
 </div>
 <!-- Modal de informacion -->
 <div class="modal fade" id="modalStatic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalstaticnegocio" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+          </div>
+          <div class="modal-body">
+              <div id="carouselExampleIndicators" class="carousel slide">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active" style="height: 65vh;">
+                      <img src="https://i.ibb.co/nsmjh6d/business-people-shaking-hands-together.jpg" class="d-block w-100 object-fit-cover" alt="...">
+                    </div>
+                    <div class="carousel-item" style="height: 65vh;">
+                      <img src="https://i.ibb.co/nsmjh6d/business-people-shaking-hands-together.jpg" class="d-block w-100 object-fit-cover" alt="...">
+                    </div>
+                    <div class="carousel-item" style="height: 65vh;">
+                      <img src="https://i.ibb.co/nsmjh6d/business-people-shaking-hands-together.jpg" class="d-block w-100 object-fit-cover" alt="...">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+                @if (negocioSesion | async; as negocio) {
+                  <div class="row gx-0 flex-column">
+                    <label class="m-2 fs-1">{{negocio?.titulo}}</label>
+                    <p class="m-2">{{negocio?.descripcion}}</p>
+                    <label class="m-2 fs-5">{{negocio?.tipo_negocio}}</label>
+                    <label class="m-2 fs-5">{{negocio?.lugar}}</label>
+                  </div>
+                }
 
-            </div>
-            <div class="modal-footer">
-
-            </div>
-        </div>
-    </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-warning me-3" data-bs-dismiss="modal" (click)="aprobar()">Aprobar</button>
+              <button type="button" class="btn btn-danger">Desaprobar</button>
+          </div>
+      </div>
+  </div>
 </div>

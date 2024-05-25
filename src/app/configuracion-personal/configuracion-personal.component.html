@@ -1,0 +1,57 @@
+<div class="bg-light vh-100 vw-100">
+  <div class="bg-dark h-100">
+    <header class="z-2 bg-head rounded-bottom-3 navbar pt-0 pb-0 gx-0 shadow bg-secondary">
+      <div class="container-fluid gap-0 shadow rounded-bottom-3 pt-2 pb-2 rounded-bottom-3 justify-content-around shadow bg-light">
+          <a class="text-dark fw-semibold fs-2 ms-4 text-decoration-none" href="/"><h1>Configuracion de Perfil</h1></a>
+          <div class="vr"></div>
+          <div class="input-group w-50">
+              <input type="text" class="form-control" placeholder="¿Buscas Algo?" aria-label="¿Buscar Algo?" aria-describedby="button-addon">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon">Buscar</button>
+          </div>
+          <button data-bs-toggle="offcanvas" class="navbar-toggler d-flex row align-items-center" type="button" data-bs-target="#offcanvas2" aria-controls="offcanvas2" style="margin-right: 10px">
+              <div class="col-sm-auto text-center">
+                  <label class="fw-semibold">Perfil</label>
+              </div>
+              <div class="col-sm-auto rounded" style="width: 60px; height: 60px; background-color: #000000; ">
+                  <img src="" alt="">
+              </div>
+          </button>
+      </div>
+    </header>
+
+    <div class="row gx-0 justify-content-center align-items-center overflow-auto" style="height: 85%;">
+      <div class="w-50">
+        <form class="row justify-content-center text-light" [formGroup]="userForm">
+          <label class="mt-3">Usuario</label>
+          <input type="text" class="form-control form-control-sm shadow mt-1 border-0" formControlName="usuario">
+          <label class="mt-3">Correo</label>
+          <input type="text" class="form-control form-control-sm shadow mt-1 border-0" formControlName="correo">
+          <label class="mt-3">Nombre</label>
+          <input type="text" class="form-control form-control-sm shadow mt-1 border-0" formControlName="nombre">
+          <label class="mt-3">Apellido</label>
+          <input type="text" class="form-control form-control-sm shadow mt-1 border-0" formControlName="apellido">
+          <label class="mt-3">Ciudad</label>
+          <input type="text" class="form-control form-control-sm shadow mt-1 border-0" formControlName="ciudad">
+          <label class="mt-3">Telefono</label>
+          <input type="number" class="form-control form-control-sm shadow mt-1 border-0" formControlName="telefono">
+          <label class="mt-3">tipo_documento</label>
+          <select class="form-select form-select-sm" aria-label="Default select example" formControlName="tipo_documento">
+            <option selected>Tipo de documento</option>
+            <option value="cc">Cedula de Ciudadania</option>
+            <option value="cedula de extrangeria">Cedula de Extrangeria</option>
+          </select>
+          <button class="btn btn-secondary mt-5" (click)="guardarInfo()">Guardar Datos</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="shadow offcanvas offcanvas-end rounded-end-2 rounded-start-2" id="offcanvas2">
+      <div class="z-2 shadow justify-content-start rounded-start-2 row fs-5 fw-semibold  pt-2 pb-2 sticky-sm-top gx-0">
+          <button type="button" class="position-absolute col-auto btn-close ms-1" data-bs-dismiss="offcanvas" aria-label="close"></button>
+          <label class="col-auto text-center flex-grow-1 offcanvas-title">Perfil de Usuario</label>
+      </div>
+      <app-perfil-opciones></app-perfil-opciones>
+    </div>
+  </div>
+</div>

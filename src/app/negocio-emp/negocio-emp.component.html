@@ -1,0 +1,39 @@
+@if (negocios$ | async; as resultObject) {
+  @for (item of resultObject; track item.titulo) {
+    @if (item.aprobado) {
+      <button class="bg-light p-3 rounded-3" (click)="mandarSubasta(item.id_negocio)">
+        <div class="row gx-0 justify-content-around pe-none gap-2">
+          <div style="height: 30vh; width: 25vw;">
+            <img src="https://i.ibb.co/k4GHsWy/business-people-shaking-hands-together.jpg" class="img-fluid">
+          </div>
+          <div style="height: 30vh; width: 25vw;">
+            <img src="https://i.ibb.co/k4GHsWy/business-people-shaking-hands-together.jpg" class="img-fluid">
+          </div>
+        </div>
+        <div class="row gx-0 text-center align-items-center pe-none mt-5">
+          <h2 class="col m-0">{{item.titulo}}</h2>
+          <p class="col m-0">{{item.descripcion}}</p>
+          <p class="col m-0">{{item.lugar}}</p>
+          <span class="col">@if (item.aprobado) {aprobado}@else {Sin Aprobar}</span>
+        </div>
+      </button>
+    }@else {
+      <button class="bg-light p-3 rounded-3" disabled>
+        <div class="row gx-0 justify-content-around pe-none gap-2">
+          <div style="height: 30vh; width: 25vw;">
+            <img src="https://i.ibb.co/k4GHsWy/business-people-shaking-hands-together.jpg" class="img-fluid">
+          </div>
+          <div style="height: 30vh; width: 25vw;">
+            <img src="https://i.ibb.co/k4GHsWy/business-people-shaking-hands-together.jpg" class="img-fluid">
+          </div>
+        </div>
+        <div class="row gx-0 text-center align-items-center pe-none mt-5">
+          <h2 class="col m-0">{{item.titulo}}</h2>
+          <p class="col m-0">{{item.descripcion}}</p>
+          <p class="col m-0">{{item.lugar}}</p>
+          <span class="col">@if (item.aprobado) {aprobado}@else {Sin Aprobar}</span>
+        </div>
+      </button>
+    }
+  }
+}

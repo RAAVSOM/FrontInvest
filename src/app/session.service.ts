@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UsuarioGeneral, UsuarioLogin } from './interfaces/usuario';
+import { EmprendedorGeneral, InversionistaGeneral, UsuarioGeneral, UsuarioLogin } from './interfaces/usuario';
 
 @Injectable({
   providedIn: 'root',
@@ -7,19 +7,24 @@ import { UsuarioGeneral, UsuarioLogin } from './interfaces/usuario';
 export class SessionService {
   usuarioVacio: UsuarioGeneral | undefined;
   usuarioSesion: UsuarioGeneral | undefined;
+  emprendedorSesion: EmprendedorGeneral | undefined;
+  inversionistaSesion: InversionistaGeneral | undefined;
   user: UsuarioLogin = { usuario: '', clave: '' };
   constructor() {}
 
-  getUser() {
-    return this.user;
-  }
-
-  getUsuarioSesion() {
-    return this.usuarioSesion;
-  }
-
   setUsuarioSesion(usuarioSesion: UsuarioGeneral) {
     this.usuarioSesion = usuarioSesion;
+    localStorage.setItem("usuario", JSON.stringify(usuarioSesion));
+  }
+
+  setInversionista(inversionistaSesion: InversionistaGeneral){
+    this.inversionistaSesion = inversionistaSesion;
+    localStorage.setItem("inversionista", JSON.stringify(inversionistaSesion));
+  }
+
+  setEmprendedor(emprendedorSesion: EmprendedorGeneral){
+    this.emprendedorSesion = emprendedorSesion;
+    localStorage.setItem("emprendedor", JSON.stringify(emprendedorSesion));
   }
 
   cerrarSesion() {

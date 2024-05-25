@@ -1,0 +1,62 @@
+@if(tipo_usuario){
+  @if(negocioSesion | async; as item){
+    @if(!item.finalizado){
+      <div class="h-75 w-100 row gx-0 flex-column overflow-auto p-5">
+        @if(solicitudes$ | async; as resultObject){
+          @for(item of resultObject; track item.id_solicitud){
+            <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0" data-bs-toggle="modal" data-bs-target="#modalStaticS" (click)="verSol(item.id_solicitud)">
+              <label class="text-center">Valor: ${{item.valor_solicitud}}</label>
+              <div class="row gx-0">
+                <label class="col">Nivel de Riezgo Tolerado: {{item.nivel_riezgotolerado}}#</label>
+              </div>
+              <div class="row gx-0">
+                <label class="col">Liquidez: {{item.porcentaje_liquidez}}%</label>
+                <label class="col">Rentabilidad: {{item.porcentaje_rentabilidad}}%</label>
+              </div>
+            </button>
+          }
+        }
+      </div>
+      <div class="bg-secondary w-100 h-25 row gx-0 justify-content-center align-items-center" >
+        <button class="shadow btn btn-dark w-50 h-50 rounded-3" data-bs-toggle="modal" data-bs-target="#modalStaticC">Cerrar Subasta</button>
+      </div>
+    }@else {
+      <div class="h-75 w-100 row gx-0 flex-column overflow-auto p-5">
+        @if(inversionSesion$ | async; as resultObject){
+          @for(item of resultObject; track item.id_inversion){
+            <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0" data-bs-toggle="modal" data-bs-target="#modalStaticI" (click)="verInv(item.id_inversion)">
+              <label class="text-center">Valor: ${{item.solicitud.valor_solicitud}}</label>
+              <div class="row gx-0">
+                <label class="col">Nivel de Riezgo Tolerado: {{item.solicitud.nivel_riezgotolerado}}#</label>
+              </div>
+              <div class="row gx-0">
+                <label class="col">Liquidez: {{item.solicitud.porcentaje_liquidez}}%</label>
+                <label class="col">Rentabilidad: {{item.solicitud.porcentaje_rentabilidad}}%</label>
+              </div>
+            </button>
+          }
+        }
+      </div>
+    }
+  }
+}@else {
+  <div class="h-75 w-100 row gx-0 flex-column overflow-auto p-5">
+    @if(solicitudes$ | async; as resultObject){
+      @for(item of resultObject; track item.id_solicitud){
+        <button class="row rounded-3 btn btn-dark shadow justify-content-start mt-2 gx-0" disabled>
+          <label class="text-center">Valor: ${{item.valor_solicitud}}</label>
+          <div class="row gx-0">
+            <label class="col">Nivel de Riezgo Tolerado: {{item.nivel_riezgotolerado}}#</label>
+          </div>
+          <div class="row gx-0">
+            <label class="col">Liquidez: {{item.porcentaje_liquidez}}%</label>
+            <label class="col">Rentabilidad: {{item.porcentaje_rentabilidad}}%</label>
+          </div>
+        </button>
+      }
+    }
+  </div>
+  <div class="bg-secondary w-100 h-25 row gx-0 justify-content-center align-items-center" >
+    <button class="shadow btn btn-dark w-50 h-50 rounded-3" data-bs-toggle="modal" data-bs-target="#modalStatic">Agregar Solicitud de Inversion</button>
+  </div>
+}
